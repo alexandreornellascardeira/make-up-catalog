@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+
+    <title>Make Up Catalog</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+  
+    <header>
+      <h1>Make Up Catalog</h1>
+    </header>
+    <main>
+      <form class="catalog-control">
+        <div class="form-control">
+          <label for="filter-name">Nome:</label>
+          <input name="filterName" type="text" id="filter-name" oninput="doFilter(filterBrand.value, filterType.value, filterName.value, sortType.value)" onkeydown="doFilter(filterBrand.value, filterType.value, filterName.value, sortType.value)"/>
+        </div>
+        <div class="form-control">
+          <label for="filter-brand">Marca:</label>
+          <select name="filterBrand" id="filter-brand" onchange="doFilter(this.value, filterType.value, filterName.value, sortType.value)">
+            <option value="">Todos</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="filter-type">Tipo:</label>
+          <select name="filterType" id="filter-type" onchange="doFilter(filterBrand.value, this.value, filterName.value, sortType.value)">
+            <option value="">Todos</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="sort"></label>
+          <select name="sortType" id="sort-type" onchange="doFilter(filterBrand.value, filterType.value, filterName.value, this.value)">
+            <option value="Melhor Avaliados">Melhor Avaliados</option>
+            <option value="Menores Preços">Menores Preços</option>
+            <option value="Maiores Preços">Maiores Preços</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+          </select>
+          
+        </div>
+      </form>
+      <section class="catalog" id="catalogSection"></section>
+    </main>
+    <footer>
+      <div style="text-align: center;">
+        <span id="msgAndamento"></span>
+      </div>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+  <script>
+    //Inicializa o catálogo de produtos
+    getCatalog();
+  </script>
+</html>
